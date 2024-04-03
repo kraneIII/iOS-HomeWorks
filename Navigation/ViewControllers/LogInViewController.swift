@@ -368,7 +368,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             self.passwordField.isSecureTextEntry = false
             
             self.indicator.stopAnimating()
-            self.passwordField.text = "   some"
+            self.passwordField.text = "some"
             workItem.cancel()
             
         }

@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController {
     
     init(coordinator: LoginBaseCoordinator) {
         super.init(nibName: nil, bundle: nil)
-        self.coordiator = coordinator
+        self.coordiator = coordinator as? FeedFlowCoordinator as? any LoginBaseCoordinator
     }
     
     required init?(coder: NSCoder) {

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA5407662BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5407652BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 */; };
+		EA5407682BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5407672BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 */; };
+		EA54076B2BB9EF1500B535A6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54076A2BB9EF1500B535A6 /* NetworkService.swift */; };
 		EA94690A2B0E146D00F6DFB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9469092B0E146D00F6DFB7 /* AppDelegate.swift */; };
 		EA94690C2B0E146D00F6DFB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94690B2B0E146D00F6DFB7 /* SceneDelegate.swift */; };
 		EA94690E2B0E146D00F6DFB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94690D2B0E146D00F6DFB7 /* ViewController.swift */; };
@@ -49,6 +52,7 @@
 		EAF34AA92B8BB9BD0031DE2F /* LoginFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF34AA82B8BB9BD0031DE2F /* LoginFlowCoordinator.swift */; };
 		EAF34AAB2B9208090031DE2F /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = EAF34AAA2B9208090031DE2F /* iOSIntPackage */; };
 		EAF34AAE2B9F98060031DE2F /* PasswordBrute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF34AAD2B9F98060031DE2F /* PasswordBrute.swift */; };
+		EAF34AB02BA9EAA60031DE2F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF34AAF2BA9EAA60031DE2F /* Errors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +94,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EA5407652BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Abe Parker It Is What It Is.mp3"; sourceTree = "<group>"; };
+		EA5407672BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Shaya Zamora No Love For A Sinner.mp3"; sourceTree = "<group>"; };
+		EA54076A2BB9EF1500B535A6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		EA9469062B0E146D00F6DFB7 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9469092B0E146D00F6DFB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA94690B2B0E146D00F6DFB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +138,7 @@
 		EAF34AA62B8BB9A70031DE2F /* FeedFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFlowCoordinator.swift; sourceTree = "<group>"; };
 		EAF34AA82B8BB9BD0031DE2F /* LoginFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowCoordinator.swift; sourceTree = "<group>"; };
 		EAF34AAD2B9F98060031DE2F /* PasswordBrute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordBrute.swift; sourceTree = "<group>"; };
+		EAF34AAF2BA9EAA60031DE2F /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,13 +170,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA5407692BB9EED200B535A6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EAF34A662B5DBF0C0031DE2F /* StorageServiceTests */,
+				EAF34A582B5DBF0C0031DE2F /* StorageService */,
+				EA54076A2BB9EF1500B535A6 /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		EA9468FD2B0E146D00F6DFB7 = {
 			isa = PBXGroup;
 			children = (
 				EA9469082B0E146D00F6DFB7 /* Navigation */,
 				EAF34A962B7FBC2A0031DE2F /* Extensiones */,
-				EAF34A582B5DBF0C0031DE2F /* StorageService */,
-				EAF34A662B5DBF0C0031DE2F /* StorageServiceTests */,
 				EA9469072B0E146D00F6DFB7 /* Products */,
 				EAF34A792B62DE9A0031DE2F /* Frameworks */,
 			);
@@ -187,6 +203,8 @@
 		EA9469082B0E146D00F6DFB7 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				EA5407652BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 */,
+				EA5407672BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 */,
 				EA9469172B0E146F00F6DFB7 /* Info.plist */,
 				EA9469142B0E146F00F6DFB7 /* LaunchScreen.storyboard */,
 				EA9469122B0E146F00F6DFB7 /* Accent color.xcassets */,
@@ -194,6 +212,7 @@
 				EAF34AA02B861A000031DE2F /* Coordinators */,
 				EA9469252B0EA81700F6DFB7 /* ViewControllers */,
 				EA9469532B0FEDA500F6DFB7 /* Data */,
+				EA5407692BB9EED200B535A6 /* Services */,
 				EAF34A942B7FBB040031DE2F /* CustomObjects */,
 			);
 			path = Navigation;
@@ -230,6 +249,7 @@
 				EAF34A842B6982EB0031DE2F /* SchemeUser.swift */,
 				EAF34A862B698E840031DE2F /* UserModel.swift */,
 				EA9469292B0FE60E00F6DFB7 /* Post.swift */,
+				EAF34AAF2BA9EAA60031DE2F /* Errors.swift */,
 				EAF34A882B698EBD0031DE2F /* Services */,
 			);
 			path = Data;
@@ -427,7 +447,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					EA9469052B0E146D00F6DFB7 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -471,7 +491,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9469162B0E146F00F6DFB7 /* LaunchScreen.storyboard in Resources */,
+				EA5407682BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 in Resources */,
 				EA9469132B0E146F00F6DFB7 /* Accent color.xcassets in Resources */,
+				EA5407662BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,8 +525,10 @@
 				EA94690E2B0E146D00F6DFB7 /* ViewController.swift in Sources */,
 				EAA454492B2B72EF00636F07 /* UserPost.swift in Sources */,
 				EAA4545A2B3A106D00636F07 /* CollectionImage.swift in Sources */,
+				EAF34AB02BA9EAA60031DE2F /* Errors.swift in Sources */,
 				EA94690A2B0E146D00F6DFB7 /* AppDelegate.swift in Sources */,
 				EAA454352B13E56100636F07 /* ProfileHeaderView.swift in Sources */,
+				EA54076B2BB9EF1500B535A6 /* NetworkService.swift in Sources */,
 				EA9469272B0FB6BB00F6DFB7 /* InfoViewController.swift in Sources */,
 				EAF34AA42B861A830031DE2F /* MainCoordinator.swift in Sources */,
 				EAA454562B38BCEB00636F07 /* UserPhotos.swift in Sources */,

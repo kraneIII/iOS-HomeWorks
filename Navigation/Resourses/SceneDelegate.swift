@@ -16,6 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         self.window = window
         
+        let appConfigurator = AppConfiguration.planets
+
+        NetworkManager.reques(for: appConfigurator)
+                
         //        let feedViewController = FeedViewController()
         //
         //        let logInViewController = LogInViewController()
