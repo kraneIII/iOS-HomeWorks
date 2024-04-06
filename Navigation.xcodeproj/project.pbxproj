@@ -10,6 +10,7 @@
 		EA5407662BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5407652BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 */; };
 		EA5407682BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5407672BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 */; };
 		EA54076B2BB9EF1500B535A6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54076A2BB9EF1500B535A6 /* NetworkService.swift */; };
+		EA54076D2BC1C2D600B535A6 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54076C2BC1C2D600B535A6 /* NetworkModel.swift */; };
 		EA94690A2B0E146D00F6DFB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9469092B0E146D00F6DFB7 /* AppDelegate.swift */; };
 		EA94690C2B0E146D00F6DFB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94690B2B0E146D00F6DFB7 /* SceneDelegate.swift */; };
 		EA94690E2B0E146D00F6DFB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94690D2B0E146D00F6DFB7 /* ViewController.swift */; };
@@ -97,6 +98,7 @@
 		EA5407652BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Abe Parker It Is What It Is.mp3"; sourceTree = "<group>"; };
 		EA5407672BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Shaya Zamora No Love For A Sinner.mp3"; sourceTree = "<group>"; };
 		EA54076A2BB9EF1500B535A6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		EA54076C2BC1C2D600B535A6 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		EA9469062B0E146D00F6DFB7 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9469092B0E146D00F6DFB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA94690B2B0E146D00F6DFB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				EAF34A662B5DBF0C0031DE2F /* StorageServiceTests */,
 				EAF34A582B5DBF0C0031DE2F /* StorageService */,
 				EA54076A2BB9EF1500B535A6 /* NetworkService.swift */,
+				EA54076C2BC1C2D600B535A6 /* NetworkModel.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				EAF34A992B813FF30031DE2F /* FeedModel.swift in Sources */,
 				EAF34A8A2B6D4AF10031DE2F /* Checker.swift in Sources */,
 				EAF34A9F2B85B5BF0031DE2F /* FeedProtocol.swift in Sources */,
+				EA54076D2BC1C2D600B535A6 /* NetworkModel.swift in Sources */,
 				EA94690C2B0E146D00F6DFB7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
