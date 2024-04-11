@@ -15,9 +15,11 @@ struct Planet: Decodable {
     let created: String
     let edited: String
     let url: URL?
-}
-
-enum CodingKeys: String, CodingKey {
-    case name,rotationPeriod, orbitlaPeriod, diameter, climate, gravity, terrain, population, surfaceWater, residents, films, created, edited, url
-
+    
+    enum CodingKeys: String, CodingKey {
+        case name, diameter, climate, gravity, terrain, population, residents, films, created, edited, url
+        case rotationPeriod = "rotation_period"
+        case orbitlaPeriod = "orbital_period"
+        case surfaceWater = "surface_water"
+    }
 }
