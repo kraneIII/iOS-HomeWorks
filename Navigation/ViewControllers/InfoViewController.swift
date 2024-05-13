@@ -58,7 +58,7 @@ class InfoViewController: UIViewController {
         NetworkManager().secondRequest(completion: { [weak self] planet in
             guard let self else { return }
             DispatchQueue.main.async {
-                self.audioLabel.text = planet.orbitlaPeriod
+                self.audioLabel.text = planet.name
             }
         })
         

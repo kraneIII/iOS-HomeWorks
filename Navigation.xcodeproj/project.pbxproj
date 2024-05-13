@@ -11,6 +11,12 @@
 		EA5407682BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5407672BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 */; };
 		EA54076B2BB9EF1500B535A6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54076A2BB9EF1500B535A6 /* NetworkService.swift */; };
 		EA54076D2BC1C2D600B535A6 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54076C2BC1C2D600B535A6 /* NetworkModel.swift */; };
+		EA5407732BF1417200B535A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA5407722BF1417200B535A6 /* GoogleService-Info.plist */; };
+		EA5407762BF1437400B535A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EA5407752BF1437400B535A6 /* FirebaseAuth */; };
+		EA5407782BF1437400B535A6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EA5407772BF1437400B535A6 /* FirebaseFirestore */; };
+		EA54077A2BF1437400B535A6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EA5407792BF1437400B535A6 /* FirebaseFirestoreSwift */; };
+		EA54077C2BF151EC00B535A6 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54077B2BF151EC00B535A6 /* SignUpController.swift */; };
+		EA54077E2BF29DDD00B535A6 /* ChekerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54077D2BF29DDD00B535A6 /* ChekerService.swift */; };
 		EA94690A2B0E146D00F6DFB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9469092B0E146D00F6DFB7 /* AppDelegate.swift */; };
 		EA94690C2B0E146D00F6DFB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94690B2B0E146D00F6DFB7 /* SceneDelegate.swift */; };
 		EA94690E2B0E146D00F6DFB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94690D2B0E146D00F6DFB7 /* ViewController.swift */; };
@@ -99,6 +105,9 @@
 		EA5407672BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Shaya Zamora No Love For A Sinner.mp3"; sourceTree = "<group>"; };
 		EA54076A2BB9EF1500B535A6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		EA54076C2BC1C2D600B535A6 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		EA5407722BF1417200B535A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EA54077B2BF151EC00B535A6 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		EA54077D2BF29DDD00B535A6 /* ChekerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChekerService.swift; sourceTree = "<group>"; };
 		EA9469062B0E146D00F6DFB7 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9469092B0E146D00F6DFB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA94690B2B0E146D00F6DFB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +160,9 @@
 				EAF34AAB2B9208090031DE2F /* iOSIntPackage in Frameworks */,
 				EAF34A7E2B62E39D0031DE2F /* SnapKit in Frameworks */,
 				EAF34A6C2B5DBF0C0031DE2F /* StorageService.framework in Frameworks */,
+				EA5407782BF1437400B535A6 /* FirebaseFirestore in Frameworks */,
+				EA5407762BF1437400B535A6 /* FirebaseAuth in Frameworks */,
+				EA54077A2BF1437400B535A6 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +191,7 @@
 				EAF34A582B5DBF0C0031DE2F /* StorageService */,
 				EA54076A2BB9EF1500B535A6 /* NetworkService.swift */,
 				EA54076C2BC1C2D600B535A6 /* NetworkModel.swift */,
+				EA54077D2BF29DDD00B535A6 /* ChekerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -210,6 +223,7 @@
 				EA5407672BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 */,
 				EA9469172B0E146F00F6DFB7 /* Info.plist */,
 				EA9469142B0E146F00F6DFB7 /* LaunchScreen.storyboard */,
+				EA5407722BF1417200B535A6 /* GoogleService-Info.plist */,
 				EA9469122B0E146F00F6DFB7 /* Accent color.xcassets */,
 				EA9469222B0E916A00F6DFB7 /* Resourses */,
 				EAF34AA02B861A000031DE2F /* Coordinators */,
@@ -345,6 +359,7 @@
 				EAF34A9A2B84C8080031DE2F /* FeedViewModel.swift */,
 				EAF34A9E2B85B5BF0031DE2F /* FeedProtocol.swift */,
 				EAF34A982B813FF30031DE2F /* FeedModel.swift */,
+				EA54077B2BF151EC00B535A6 /* SignUpController.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -400,6 +415,9 @@
 			packageProductDependencies = (
 				EAF34A7D2B62E39D0031DE2F /* SnapKit */,
 				EAF34AAA2B9208090031DE2F /* iOSIntPackage */,
+				EA5407752BF1437400B535A6 /* FirebaseAuth */,
+				EA5407772BF1437400B535A6 /* FirebaseFirestore */,
+				EA5407792BF1437400B535A6 /* FirebaseFirestoreSwift */,
 			);
 			productName = Navigation;
 			productReference = EA9469062B0E146D00F6DFB7 /* Navigation.app */;
@@ -476,6 +494,7 @@
 			packageReferences = (
 				EAF34A7C2B62E39D0031DE2F /* XCRemoteSwiftPackageReference "SnapKit" */,
 				EAF34A8F2B72A3590031DE2F /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+				EA5407742BF1437300B535A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = EA9469072B0E146D00F6DFB7 /* Products */;
 			projectDirPath = "";
@@ -495,6 +514,7 @@
 			files = (
 				EA9469162B0E146F00F6DFB7 /* LaunchScreen.storyboard in Resources */,
 				EA5407682BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 in Resources */,
+				EA5407732BF1417200B535A6 /* GoogleService-Info.plist in Resources */,
 				EA9469132B0E146F00F6DFB7 /* Accent color.xcassets in Resources */,
 				EA5407662BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 in Resources */,
 			);
@@ -532,6 +552,7 @@
 				EA94690A2B0E146D00F6DFB7 /* AppDelegate.swift in Sources */,
 				EAA454352B13E56100636F07 /* ProfileHeaderView.swift in Sources */,
 				EA54076B2BB9EF1500B535A6 /* NetworkService.swift in Sources */,
+				EA54077C2BF151EC00B535A6 /* SignUpController.swift in Sources */,
 				EA9469272B0FB6BB00F6DFB7 /* InfoViewController.swift in Sources */,
 				EAF34AA42B861A830031DE2F /* MainCoordinator.swift in Sources */,
 				EAA454562B38BCEB00636F07 /* UserPhotos.swift in Sources */,
@@ -541,6 +562,7 @@
 				EAF34A9B2B84C8080031DE2F /* FeedViewModel.swift in Sources */,
 				EAA454542B3772C400636F07 /* PhotosViewController.swift in Sources */,
 				EA94691E2B0E906C00F6DFB7 /* FeedViewController.swift in Sources */,
+				EA54077E2BF29DDD00B535A6 /* ChekerService.swift in Sources */,
 				EAA454472B2B5AA300636F07 /* PostTableViewCell.swift in Sources */,
 				EAA4544E2B2CE54200636F07 /* Extencions to UITableView.swift in Sources */,
 				EAF34AA22B861A410031DE2F /* BaseCoordinator.swift in Sources */,
@@ -941,6 +963,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EA5407742BF1437300B535A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.25.0;
+			};
+		};
 		EAF34A7C2B62E39D0031DE2F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -960,6 +990,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EA5407752BF1437400B535A6 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA5407742BF1437300B535A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		EA5407772BF1437400B535A6 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA5407742BF1437300B535A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		EA5407792BF1437400B535A6 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA5407742BF1437300B535A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
 		EAF34A7D2B62E39D0031DE2F /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EAF34A7C2B62E39D0031DE2F /* XCRemoteSwiftPackageReference "SnapKit" */;

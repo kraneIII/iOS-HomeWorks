@@ -1,17 +1,31 @@
 import UIKit
 import Foundation
+import FirebaseAuth
 
 protocol LoginViewControllerDelegate {
     
-    func check(login: String, password: String) -> Bool
-}
+    func checkCredentials(email: String, password: String, completeon: @escaping (Bool) -> Void)
+    
+    func sighUp(email: String, password: String, completeon: @escaping (Bool) -> Void)
+    
+    }
 
 struct LoginInspector: LoginViewControllerDelegate {
-    func check(login: String, password: String) -> Bool {
-        return Checker.shared.check(loginn: login, passwordd: password)
+    func checkCredentials(email: String, password: String, completeon: @escaping (Bool) -> Void) {
+        CheckService().checkCredentials(email: email, password: password, completeon: { result in
+            completeon(result)
+        })
     }
     
-}
+    func sighUp(email: String, password: String, completeon: @escaping (Bool) -> Void) {
+        CheckService().sighUp(email: email, password: password, completeon: { result in
+            completeon(result)
+        })
+    }
+    
+
+    }
+    
 
 extension String {
     var numbers: String { return "1234567890"}
@@ -31,75 +45,7 @@ extension String {
 
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
-    
-    private var timer: Timer?
-    private var counter = 20
-    
-    private lazy var timerLabel: UILabel = {
-        let timerLabel = UILabel()
-        timerLabel.text = "20"
-        timerLabel.translatesAutoresizingMaskIntoConstraints = false
-        timerLabel.textColor = .gray
-        
-        return timerLabel
-    }()
-    
-    private lazy var timerCompletionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    //MARK: - BruteForce
-    
-    func bruteForce(unlockPassword: String) {
-        
-        let allowedPasswords: [String] = String().printable.map {
-        String($0) }
-        
-        var password: String = ""
-        
-        while password != unlockPassword {
-            password = generateBruteForce(password, fromArray: allowedPasswords)
-        }
-        
-        print(password)
-    }
-    
-    func indexOf(character: Character, _ array: [String]) -> Int {
-        return array.firstIndex(of: String(character))!
-    }
 
-    func characterAt(index: Int, _ array: [String]) -> Character {
-        return index < array.count ? Character(array[index])
-                                   : Character("")
-    }
-    
-    func generateBruteForce(_ string: String, fromArray array: [String]) -> String {
-        var str: String = string
-
-        if str.count <= 0 {
-            str.append(characterAt(index: 0, array))
-        }
-        else {
-            str.replace(at: str.count - 1,
-                        with: characterAt(index: (indexOf(character: str.last!, array) + 1) % array.count, array))
-
-            if indexOf(character: str.last!, array) == 0 {
-                str = String(generateBruteForce(String(str.dropLast()), fromArray: array)) + String(str.last!)
-            }
-        }
-
-        return str
-    }
-
-    
-    
-    
-    //MARK: - BruteForceEnd
-
-    
     var loginDelegate: LoginViewControllerDelegate?
     
     var coordinator: LoginBaseCoordinator?
@@ -177,34 +123,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         return passwordTextField
     }()
-    
-    private lazy var indicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView()
-        indicator.hidesWhenStopped = true
-        indicator.style = .medium
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        
-        return indicator
-    }()
-    
     // MARK: - Button
-    
-    private lazy var bruteForceButton: UIButton = {
-        let bruteForce = UIButton()
-        bruteForce.setTitle("Подобрать пароль", for: .normal)
-        bruteForce.setTitleColor(.gray, for: .normal)
-        bruteForce.layer.cornerRadius = 10
-        bruteForce.layer.shadowColor = UIColor.white.cgColor
-        bruteForce.layer.shadowOpacity = 0.5
-        bruteForce.layer.shadowOffset = CGSize(width: 5, height: 5)
-        bruteForce.layer.shadowRadius = 4
-        bruteForce.translatesAutoresizingMaskIntoConstraints = false
-        bruteForce.backgroundColor = .white
-        bruteForce.addTarget(self, action: #selector(brutePassword), for: .touchUpInside)
-       
-        return bruteForce
-    }()
-    
+
     
     private lazy var button: UIButton = {
         let button = UIButton()
@@ -212,7 +132,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         button.setTitleColor(.white, for: .normal)
         button.backgroundImage(for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        //        button.setBackgroundImage( UIImage(named: "blue_pixel"), for: .normal)
         button.backgroundColor = UIColor(named: "Color")
         button.setTitle("Login", for: .normal)
         button.layer.borderColor = UIColor.white.cgColor
@@ -221,9 +140,24 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         button.layer.shadowOpacity = 0.5
         button.layer.shadowColor = UIColor.gray.cgColor
         button.layer.shadowRadius = 3
-        button.addTarget(self, action: #selector(profileButtonTapped), for: .touchUpInside )
+        button.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside )
         
         return button
+    }()
+    
+    private lazy var signUpButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Sign up", for: .normal)
+        button.tintColor = .systemBlue
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.shadowOffset = CGSize(width: 5, height: 5)
+        button.layer.shadowRadius = 3.0
+        button.layer.shadowColor = UIColor.systemGray5.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.addTarget(self, action: #selector(signUp), for: .touchUpInside)
+        
+       return button
     }()
     
     init(coordinator: LoginBaseCoordinator) {
@@ -267,10 +201,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(button)
         view.addSubview(logoView)
         view.addSubview(stackView)
-        view.addSubview(bruteForceButton)
-        view.addSubview(indicator)
-        view.addSubview(timerLabel)
-        view.addSubview(timerCompletionLabel)
+        view.addSubview(signUpButton)
     }
     
     private func logInViewControllerSetup() {
@@ -297,129 +228,47 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             button.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
             button.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
             
-            bruteForceButton.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 10),
-            bruteForceButton.leftAnchor.constraint(equalTo: button.leftAnchor,constant: 50),
-            bruteForceButton.rightAnchor.constraint(equalTo: button.rightAnchor, constant: -50),
-            bruteForceButton.heightAnchor.constraint(equalToConstant: 30),
+            signUpButton.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 5),
+            signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            indicator.heightAnchor.constraint(equalToConstant: 30),
-            indicator.widthAnchor.constraint(equalToConstant: 30),
-            indicator.leftAnchor.constraint(equalTo: bruteForceButton.rightAnchor,constant: -30),
-            indicator.topAnchor.constraint(equalTo: bruteForceButton.topAnchor),
-            
-            timerLabel.topAnchor.constraint(equalTo: indicator.topAnchor,constant: 5),
-            timerLabel.leftAnchor.constraint(equalTo: indicator.rightAnchor, constant: 5),
-            
-            timerCompletionLabel.topAnchor.constraint(equalTo: bruteForceButton.bottomAnchor, constant: 10),
-            timerCompletionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            timerCompletionLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
-            
-            
-        ])
+                   ])
     }
     
     private func alert() {
-        let alert = UIAlertController(title: "Ошибка", message: "Логин или пароль введены неверно", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Oops", message: "something went wrong", preferredStyle: .alert)
         let alertAct = UIAlertAction(title: "Ок", style: .default)
-        
         alert.addAction(alertAct)
+        
         present(alert, animated: true)
     }
-    
-    private func checker() -> Bool {
-        LoginInspector().check(login: emailField.text ?? "", password: passwordField.text ?? "")
-    }
-    
+
      func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return true
     }
     
-    @objc func profileButtonTapped() {
-        if checker() == true {
-            
-            coordinator?.moveToSecondScreen()
-
-//            let profileViewController = ProfileViewController()
-//                  self.navigationController?.pushViewController(profileViewController, animated: true)
-        }
-        else {
-            
-            alert()
-            emailField.text = ""
-            passwordField.text = ""
+    @objc func signInButtonTapped() {
+        
+        loginDelegate?.checkCredentials(email: emailField.text ?? "", password: passwordField.text ?? "") { [weak self] result in
+            if result {
+                self?.coordinator?.moveToSecondScreen()
+            }
+            else {
+                self?.alert()
+            }
         }
     }
+    
+    @objc func signUp() {
+        
+        let vc = SignUpController()
+        vc.modalPresentationStyle = .popover
+        vc.modalTransitionStyle = .coverVertical
+        
+        navigationController?.present(vc, animated: true)
+    }
+
     
     // MARK: - MoveViewsWhenKeyboardAppear
-    //MARK: - код для подбора пароля
-    
-    @objc func brutePassword() {
-        
-        let workItem = DispatchWorkItem {
-            self.bruteForce(unlockPassword: "some")
-        }
-
-        self.timerLabel.isHidden = false
-        self.indicator.startAnimating()
-        self.timerCompletionLabel.text = nil
-        DispatchQueue.global().async(execute: workItem)
-        workItem.notify(queue: .main){
-            
-            self.passwordField.isSecureTextEntry = false
-            
-            self.indicator.stopAnimating()
-            self.passwordField.text = "some"
-            workItem.cancel()
-            
-        }
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] timer in
-            guard let self else { return }
-            counter -= 1
-            self.timerLabel.text = "\(counter)"
-            if counter <= 0 {
-                
-                workItem.cancel()
-                self.indicator.stopAnimating()
-                timer.invalidate()
-                self.timerLabel.isHidden = true
-                self.timerCompletionLabel.textColor = .red
-                self.timerCompletionLabel.text = "Error"
-                self.timer = nil
-                self.counter = 20
-            }
-            
-            if workItem.isCancelled == true {
-                self.timerLabel.isHidden = true
-                self.timerCompletionLabel.textColor = .systemBlue
-                self.timerCompletionLabel.text = "Password found"
-                self.timer?.invalidate()
-                self.timer = nil
-                self.counter = 20
-            }
-            
-            
-        })
-    }
-        
-//        let brute = DispatchQueue(label: "passwordBrute", qos: .userInteractive, attributes: .concurrent)
-//        let workItem = DispatchWorkItem {
-//            self.bruteForce(unlockPassword: "some")
-//        }
-  
-//        self.indicator.startAnimating()
-        
-//        DispatchQueue.global().async(execute: workItem)
-////        brute.async(execute: workItem)
-//        workItem.notify(queue: .main){
-//            
-//            self.passwordField.isSecureTextEntry = false
-//            
-//            self.indicator.stopAnimating()
-//            self.passwordField.text = "some"
-//
-//        }
-//    }
 
     @objc func moveViewsUp(notification: NSNotification){
         
@@ -436,7 +285,5 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
     }
-
-    
     
 }
