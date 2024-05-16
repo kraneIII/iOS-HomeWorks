@@ -2,7 +2,7 @@ import UIKit
 import Foundation
 import FirebaseAuth
 
-protocol LoginViewControllerDelegate: AnyObject {
+protocol LoginViewControllerDelegate {
     
     func checkCredentials(email: String, password: String, completeon: @escaping (Bool) -> Void)
     
@@ -10,7 +10,7 @@ protocol LoginViewControllerDelegate: AnyObject {
     
 }
 
-class LoginInspector: LoginViewControllerDelegate {
+struct LoginInspector: LoginViewControllerDelegate {
     
     func checkCredentials(email: String, password: String, completeon: @escaping (Bool) -> Void) {
         CheckService().checkCredentials(email: email, password: password, completeon: { result in
