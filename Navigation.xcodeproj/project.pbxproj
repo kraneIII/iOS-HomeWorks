@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA5407662BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5407652BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 */; };
-		EA5407682BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA5407672BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 */; };
 		EA54076B2BB9EF1500B535A6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54076A2BB9EF1500B535A6 /* NetworkService.swift */; };
 		EA54076D2BC1C2D600B535A6 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54076C2BC1C2D600B535A6 /* NetworkModel.swift */; };
 		EA5407732BF1417200B535A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA5407722BF1417200B535A6 /* GoogleService-Info.plist */; };
@@ -101,8 +99,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		EA5407652BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Abe Parker It Is What It Is.mp3"; sourceTree = "<group>"; };
-		EA5407672BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Shaya Zamora No Love For A Sinner.mp3"; sourceTree = "<group>"; };
 		EA54076A2BB9EF1500B535A6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		EA54076C2BC1C2D600B535A6 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		EA5407722BF1417200B535A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -219,8 +215,6 @@
 		EA9469082B0E146D00F6DFB7 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				EA5407652BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 */,
-				EA5407672BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 */,
 				EA9469172B0E146F00F6DFB7 /* Info.plist */,
 				EA9469142B0E146F00F6DFB7 /* LaunchScreen.storyboard */,
 				EA5407722BF1417200B535A6 /* GoogleService-Info.plist */,
@@ -513,10 +507,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9469162B0E146F00F6DFB7 /* LaunchScreen.storyboard in Resources */,
-				EA5407682BB49C5500B535A6 /* Shaya Zamora No Love For A Sinner.mp3 in Resources */,
 				EA5407732BF1417200B535A6 /* GoogleService-Info.plist in Resources */,
 				EA9469132B0E146F00F6DFB7 /* Accent color.xcassets in Resources */,
-				EA5407662BB49C4B00B535A6 /* Abe Parker It Is What It Is.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

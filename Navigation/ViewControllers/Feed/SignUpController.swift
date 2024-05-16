@@ -2,12 +2,21 @@ import FirebaseAuth
 import UIKit
 import Foundation
 
+protocol SignUpProtocol: AnyObject {
+    
+    func gotoSeecondScreen()
+    
+}
+
+
+
 
 
 class SignUpController: UIViewController, UITextFieldDelegate {
     
-//    private var checker: CheckService?
-
+    weak var delegate: SignUpProtocol?
+        
+    var coordinator: LoginBaseCoordinator?
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -113,9 +122,11 @@ class SignUpController: UIViewController, UITextFieldDelegate {
         
         Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] authResult, error  in
             guard let self else { return }
-            dismiss(animated: true)
+            self.delegate?.gotoSeecondScreen()
+            self.dismiss(animated: true)
         })
-        }
+    }
 }
+
 
 

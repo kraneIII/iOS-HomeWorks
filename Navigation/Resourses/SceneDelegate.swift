@@ -22,10 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
         //        let feedViewController = FeedViewController()
         //
-        //        let logInViewController = LogInViewController()
-        //        logInViewController.loginDelegate = MyLoginFactory().makeLoginInsprector()
+//        let logInViewController = LogInViewController(coordinator: LoginFlowCoordinator())
+//        logInViewController.loginDelegate =
         //
-        ////        let profileViewController = ProfileViewController()
+        //        let profileViewController = ProfileViewController()
         //
         //
         //        let tabBarController = UITabBarController()
@@ -39,8 +39,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //
         //        // MARK: - Old profile view
         //
-        ////        profileViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle" ), tag: 1)
-        //
+//                profileViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.circle" ), tag: 1)
+//        
         //        let controllers = [feedViewController,
         ////                           profileViewController,
         //                           logInViewController]

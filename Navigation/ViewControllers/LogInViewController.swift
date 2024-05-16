@@ -2,15 +2,18 @@ import UIKit
 import Foundation
 import FirebaseAuth
 
-protocol LoginViewControllerDelegate {
+protocol LoginViewControllerDelegate: AnyObject {
     
     func checkCredentials(email: String, password: String, completeon: @escaping (Bool) -> Void)
     
     func sighUp(email: String, password: String, completeon: @escaping (Bool) -> Void)
     
-    }
+}
 
-struct LoginInspector: LoginViewControllerDelegate {
+class LoginInspector: LoginViewControllerDelegate {
+    
+    weak var loginDelegate: LoginViewControllerDelegate?
+
     func checkCredentials(email: String, password: String, completeon: @escaping (Bool) -> Void) {
         CheckService().checkCredentials(email: email, password: password, completeon: { result in
             completeon(result)
@@ -22,9 +25,7 @@ struct LoginInspector: LoginViewControllerDelegate {
             completeon(result)
         })
     }
-    
-
-    }
+}
     
 
 extension String {
@@ -45,10 +46,15 @@ extension String {
 
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
-
-    var loginDelegate: LoginViewControllerDelegate?
-    
+        
     var coordinator: LoginBaseCoordinator?
+    
+    weak var loginDelegate: LoginViewControllerDelegate?
+    
+    init(loginDelegate: LoginViewControllerDelegate?) {
+        super.init(nibName: nil, bundle: nil)
+        self.loginDelegate = loginDelegate
+    }
     
     // MARK: - StackView
     
@@ -60,8 +66,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         stackView.spacing = 0.5
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        
-        
         
         stackView.addArrangedSubview(emailField)
         stackView.addArrangedSubview(passwordField)
@@ -160,6 +164,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
        return button
     }()
     
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.showsVerticalScrollIndicator = false
+        view.showsHorizontalScrollIndicator = false
+        view.backgroundColor = .white
+        
+        return view
+    }()
+    
     init(coordinator: LoginBaseCoordinator) {
         super.init(nibName: nil, bundle: nil)
         self.coordinator = coordinator
@@ -174,8 +188,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInViewControllerSetup()
         addSubViews()
         Layout()
-
-        
+                
         let tapGuester = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGuester)
         
@@ -193,7 +206,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
         return true
     }
-    
 
     //MARK: - Private
         
@@ -207,7 +219,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     private func logInViewControllerSetup() {
         view.backgroundColor = .white
         title = "Log In"
-//                tabBarController?.tabBar.isHidden = true
     }
        
     private func Layout() {
@@ -247,13 +258,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func signInButtonTapped() {
-        
+                                        
         loginDelegate?.checkCredentials(email: emailField.text ?? "", password: passwordField.text ?? "") { [weak self] result in
+            guard let self else { return }
             if result {
-                self?.coordinator?.moveToSecondScreen()
+                self.coordinator?.moveToSecondScreen()
             }
             else {
-                self?.alert()
+                self.alert()
             }
         }
     }
@@ -264,6 +276,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         vc.modalPresentationStyle = .popover
         vc.modalTransitionStyle = .coverVertical
         
+        vc.delegate = self
+        
         navigationController?.present(vc, animated: true)
     }
 
@@ -271,11 +285,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     // MARK: - MoveViewsWhenKeyboardAppear
 
     @objc func moveViewsUp(notification: NSNotification){
-        
+ 
         view.frame.origin.y = -100
     }
     
     @objc func moveViewsDown(notification: NSNotification){
+     
         view.frame.origin.y = 100
     }
     
@@ -287,3 +302,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
 }
+
+extension LogInViewController: SignUpProtocol {
+    func gotoSeecondScreen() {
+        self.coordinator?.moveToSecondScreen()
+        
+    }
+}
+
