@@ -12,8 +12,6 @@ protocol LoginViewControllerDelegate: AnyObject {
 
 class LoginInspector: LoginViewControllerDelegate {
     
-    weak var loginDelegate: LoginViewControllerDelegate?
-
     func checkCredentials(email: String, password: String, completeon: @escaping (Bool) -> Void) {
         CheckService().checkCredentials(email: email, password: password, completeon: { result in
             completeon(result)
@@ -49,7 +47,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
     var coordinator: LoginBaseCoordinator?
     
-    weak var loginDelegate: LoginViewControllerDelegate?
+    var loginDelegate: LoginViewControllerDelegate?
     
     init(loginDelegate: LoginViewControllerDelegate?) {
         super.init(nibName: nil, bundle: nil)
@@ -258,7 +256,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func signInButtonTapped() {
-                                        
+        
+        loginDelegate = LoginInspector()
+
         loginDelegate?.checkCredentials(email: emailField.text ?? "", password: passwordField.text ?? "") { [weak self] result in
             guard let self else { return }
             if result {
