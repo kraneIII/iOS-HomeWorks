@@ -3,6 +3,8 @@ import UIKit
 
 class PostViewController: UIViewController {
     
+    var coordinator: FeedBaseCoordinator?
+    
     
     var postTitle: String = ""
     
@@ -14,6 +16,15 @@ class PostViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = barButton
         
+    }
+    
+    init(coordinator: FeedBaseCoordinator) {
+        super.init(nibName: nil, bundle: nil)
+        self.coordinator = coordinator
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Setup
